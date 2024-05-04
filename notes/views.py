@@ -41,10 +41,6 @@ class NoteListView(generic.ListView):
         active = self.request.GET.get("active")
         sorted_by = self.request.GET.get("sorted_by")
 
-        print("Category:", category)
-        print("Active:", active)
-        print("Sorted by:", sorted_by)
-
         if category:
             queryset = queryset.filter(category__id=category)
 
