@@ -6,7 +6,7 @@
 
   {% if user.is_authenticated %}
     <div class="user-links-navbar">
-      <a href="{{ user.get_absolute_url }}" class="user-link">{{ user.get_username }}</a>
+      <span class="user-link">{{ user.get_username }}</span>
       <a href="{% url 'account_logout' %}?next={{ request.path }}" class="list-group-item-navbar logout-link">Logout</a>
     </div>
   {% else %}
