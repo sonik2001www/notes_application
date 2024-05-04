@@ -29,5 +29,4 @@ jobs:
 
     - name: Run Flake8
       run: |
-        flake8 --exclude=**migrations
-
+        flake8 --config=.flake8
