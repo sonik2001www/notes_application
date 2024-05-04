@@ -1,0 +1,19 @@
+<form method="get" class="note-filter-form" action="">
+  <div class="form-row">
+    <div class="form-field">
+      <label class="wrap-category" for="id_category">Category:</label>
+      {{ form.category }}
+    </div>
+    <div class="form-field">
+      <label class="wrap-sorted_by" for="id_sorted_by">Sorted by:</label>
+      {{ form.sorted_by }}
+    </div>
+    <div class="form-field form-field-center">
+      <label class="wrap-active" for="id_active">Show archive:</label>
+      {{ form.active }}
+    </div>
+    <div class="form-field form-field-center">
+      <button class="form-submit" type="submit">Filter</button>
+    </div>
+  </div>
+</form>

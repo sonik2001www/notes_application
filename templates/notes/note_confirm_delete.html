@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <h1 class="category-heading">Delete note?</h1>
+  <div class="category-container">
+    <form class="category-form form-delete" action="" method="post">
+      {% csrf_token %}
+      <a class="cancel" href="{% url 'notes:note-list' %}">Cancel</a>
+      <input class="submit" type="submit" value="Yes" class="btn btn-danger">
+    </form>
+  </div>
+{% endblock %}

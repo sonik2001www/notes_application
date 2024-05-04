@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <h1 class="category-heading">
+    Category List
+    <a href="{% url 'notes:category-create' %}" style="margin-left: 2%;">
+      <img src="{% static 'images/plus.svg' %}" alt="checkmark">
+    </a>
+  </h1>
+
+  {% if category_list %}
+    <div class="category-container">
+      <ul class="category-list">
+        {% for category in category_list %}
+          <li class="category-item">
+            <div class="category-item-container">
+              <div class="category-item-container-span">
+                <span class="category-color" style="background: {{ category.color }}"></span>
+                <span class="category-name">{{ category.name }}</span>
+              </div>
+              <div>
+                <a href="{% url 'notes:category-update' pk=category.id %}" class="update-link img-setting">
+                  <img src="{% static "images/update.svg" %}" alt="Update"></a>
+                <a href="{% url 'notes:category-delete' pk=category.id %}" class="delete-link img-setting">
+                  <img src="{% static "images/delete.svg" %}" alt="Delete">
+                </a>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% else %}
+    <p class="no-categories">There are no categories in notes</p>
+  {% endif %}
+{% endblock %}

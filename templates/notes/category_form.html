@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+  <h1 class="category-heading">{{ object|yesno:"Update,Create" }} category</h1>
+
+  <div class="category-container">
+
+    {{ form.name.errors | safe }}
+    <form class="category-form" action="" method="post" novalidate>
+      {% csrf_token %}
+
+      <div class="wrap-input">
+        {{ form.name|attr:"class:input" }}
+        <label for="id_name">Name</label>
+      </div>
+
+      {{ form.color|attr:"class:input-hidden" }}
+
+      <input class="submit" type="submit" value="Submit" class="">
+    </form>
+
+    <div class="category-input">
+      <input class="jscolor" value="Click to select a color" data-jscolor="{valueElement: '#id_color'}">
+    </div>
+
+  </div>
+
+{% endblock %}
+
+
+{% block bottom_block %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.6/jscolor.min.js"></script>
+  {% load static %}
+  <script src="{% static 'js/category/color.js' %}"></script>
+{% endblock %}

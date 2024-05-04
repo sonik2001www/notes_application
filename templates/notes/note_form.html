@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+
+  <h1 class="category-heading">{{ object|yesno:"Update,Create" }} note</h1>
+
+  <div class="category-container">
+    <form class="note-form" action="" method="post" novalidate>
+      {% csrf_token %}
+
+
+      <div class="wrap-group">
+
+        <div class="wrap-select">
+          <label class="wrap-category" for="id_category">Category:</label>
+          {{ form.category|attr:"class:select" }}
+          <span name="color" id="color" class="category-color" style="background: #ffffff"></span>
+        </div>
+
+        <div class="wrap-select">
+          <label class="wrap-category" for="id_category">Create new category:</label>
+          <a href="{% url 'notes:category-create' %}" style="margin-left: 2%;">
+            <img src="{% static 'images/plus.svg' %}" alt="checkmark">
+          </a>
+        </div>
+
+        <div class="wrap-checkbox">
+          <label class="wrap-active" for="id_active">Active:</label>
+          {{ form.active|attr:"class:checkbox" }}
+        </div>
+      </div>
+
+      <div class="wrap-input-text">
+        {{ form.text|attr:"class:input-text" }}
+      </div>
+
+      <div class="submit-center">
+        <input class="submit" type="submit" value="Submit" class="">
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
+
+{% block bottom_block %}
+
+  {% load static %}
+  <script src="{% static 'js/note/color-from-select.js' %}"></script>
+{% endblock %}

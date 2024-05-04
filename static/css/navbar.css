@@ -1,0 +1,50 @@
+.container-navbar {
+    background: #ffffff;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-group-navbar {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.list-group-item-navbar {
+    font-size: 16px;
+    color: #00b894;
+    background: #ffffff;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #00b894;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.list-group-item-navbar:hover {
+    background: #00b894;
+    color: #ffffff;
+}
+
+.user-link {
+    color: #00b894;
+    text-decoration: none;
+    gap: 20px;
+}
+
+.user-link:hover {
+    text-decoration: underline;
+}
+
+.logout-link {
+    margin-left: 20px;
+}
+
+.login-link {
+    margin-left: auto;
+}

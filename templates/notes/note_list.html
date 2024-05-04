@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/filter_form.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1 class="category-heading">
+    Note list
+    <a href="{% url 'notes:note-create' %}" style="margin-left: 2%;">
+      <img src="{% static 'images/plus.svg' %}" alt="checkmark">
+    </a>
+  </h1>
+
+  <div class="category-heading form-container">
+    {% include "includes/filter_form.html" %}
+  </div>
+
+  {% if note_list %}
+    <div class="category-container">
+      <ul class="category-list">
+        {% for note in note_list %}
+          <li class="category-item">
+            <div class="category-item-container">
+              <div class="category-item-container-span">
+                <span class="category-color" style="background: {{ note.category.color }}"></span>
+                <span class="category-name">
+                  <a href="{% url "notes:note-update" pk=note.id %}" class="detail-note">
+                    {{ note.text|truncatechars:50 }}
+                    </a>
+                </span>
+              </div>
+              <div class="note-end-block">
+                <span class="note-author">
+                  {% if note.author %}
+                    {{ note.author }}<span class="last_updated"> {{ note.last_updated }}</span>
+                  {% else %}
+                    <span class="last_updated">{{ note.last_updated }}</span>
+                  {% endif %}
+                </span>
+                {% if note.active %}
+                  <button class="archive-button submit" data-note-id="{{ note.pk }}">Add to archive</button>
+                {% else %}
+                  <button class="unarchive-button submit" data-note-id="{{ note.pk }}">Unarchive</button>
+                {% endif %}
+                <div class="img-div">
+                <a href="{% url "notes:note-update" pk=note.id %}" class="update-link img-setting">
+                  <img src="{% static "images/update.svg" %}" alt="Update"></a>
+                <a href="{% url "notes:note-delete" pk=note.id %}" class="delete-link img-setting">
+                  <img src="{% static "images/delete.svg" %}" alt="Delete">
+                </a>
+                  </div>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% else %}
+    <p class="no-categories">There are no notes.</p>
+  {% endif %}
+{% endblock %}
+
+
+{% block bottom_block %}
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+      var csrfToken = '{{ csrf_token }}';
+  </script>
+  <script src="{% static 'js/note/arhivator.js' %}"></script>
+
+{% endblock %}
