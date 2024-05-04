@@ -35,7 +35,7 @@ urlpatterns = [
         CategoryDeleteView.as_view(),
         name="category-delete",
     ),
-    path("note/", NoteListView.as_view(), name="note-list"),
+    path("", NoteListView.as_view(), name="note-list"),
     path("note/create/", NoteCreateView.as_view(), name="note-create"),
     path(
         "note/<int:pk>/update/", NoteUpdateView.as_view(), name="note-update"
