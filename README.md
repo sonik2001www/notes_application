@@ -43,7 +43,7 @@ email_host_password=****** ; two-factor password for email authentication
 [database] ; Database settings
 db_name=notes
 db_user=root
-db_host=localhost
+db_host=db
 db_port=5432
 db_pass=1234
 
@@ -51,19 +51,19 @@ db_pass=1234
 
 `.env`
 ~~~
-; Django Super User credentials
+#Django Super User credentials
 USERNAME=admin
 EMAIL=admin@gmail.com
 DJANGO_SUPERUSER_PASSWORD=admin
 
-; PostgreSQL settings
+#PostgreSQL settings
 POSTGRES_HOST=db
 POSTGRES_DB=notes
 POSTGRES_USER=root
 POSTGRES_PASSWORD=1234
 POSTGRES_PORT=5432
 
-; PGAdmin User credentials
+#PGAdmin User credentials
 PGADMIN_DEFAULT_EMAIL=admin@admin.com
 PGADMIN_DEFAULT_PASSWORD=root
 ~~~
@@ -79,4 +79,3 @@ docker-compose up
 ~~~
 
 8. To visit the application notes, you can follow the link [http://0.0.0.0:8000/note/](http://0.0.0.0:8000/note/)
-
